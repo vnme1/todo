@@ -1,0 +1,40 @@
+<div  class="userInfo" th:if=${session.id}>
+    <span th:text="${session.id}"></span><span> 님 / </span>
+    <span th:text="${session.mbLevel}"></span><span> 레벨</span>
+	<button type="button">
+	    <a th:href="@{logout}" style="color: #fff">로그아웃</a>
+	</button>
+</div>
+
+<div class="title" style="color:#00a2be">사용자 리스트</div>
+
+<form role="form" action="create" method="post">
+    <div class="section form">
+       <table>
+        <colgroup>
+            <col style="width:10%"/>
+            <col style="width:40%"/>
+            <col style="width:10%"/>
+            <col style="width:40%"/>
+        </colgroup>
+        <tbody>
+            <tr>            
+	            <th class="critical"><a href="#" class="tip">ID<span>아이디</span></a></th>
+	            <td>
+	                <input type="text" name="id" placeholder="id" required/>
+	            </td>
+	            <th class="critical"><a href="#" class="tip">PW<span>패스워드</span></a></th>
+	            <td>
+	                <input type="text" name="pw" placeholder="password" required/>
+	            </td>
+	            <td>
+	                <input type="hidden" name="admin" value="admin" required/>
+	            </td>
+            </tr>
+        </tbody>
+       </table>
+       <div class="button">
+            <button type="submit" style="margin-right: 11px">멤버 추가</button>
+       </div>
+    </div>
+</form>

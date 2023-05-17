@@ -1,0 +1,98 @@
+<div class="section list">
+    <table>
+        <colgroup>
+            <col style="width: 15%"/>
+            <col style="width: 15%"/>
+            <col style="width: 8%"/>
+            <col style="width: 10%"/>
+            <col style="width: 8%"/>
+            <col style="width: 15%"/>
+            <col style="width: 15%"/>
+            <col style="width: 14%"/>
+        </colgroup>
+        <thead>
+	        <tr>
+	            <th>아이디</th>
+	            <th>패스워드</th>
+	            <th>회원등급</th>
+	            <th>아이피</th>
+	            <th>사용여부</th>
+	            <th>생성일자</th>
+	            <th>업데이트일자</th>
+	            <th>변경</th>
+	        </tr>
+        </thead>
+        <tbody>
+            <tr th:if=${itemsNotEmpty} th:each="item : ${items}">
+<!--                 <td th:text="${item.mbSeq}"></td> -->
+                <td th:text="${item.mbId}"></td>
+                <td th:text="${item.mbPw}"></td>
+                <td th:text="${item.mbLevel}"></td>
+                <td th:text="${item.mbIp}"></td>
+                <td th:text="${item.mbUse}"></td>
+                <td th:text="${item.mbCreateAt}"></td>
+                <td th:text="${item.mbUpdateAt}"></td>
+                <td style="display: flex; align-items: center; justify-content: center">
+                   <a th:href="@{/modify/{mbSeq}(mbSeq = ${item.mbSeq})}"><button>수정</button></a>
+                   <a th:href="@{/remove/{mbSeq}(mbSeq = ${item.mbSeq})}"><button>삭제</button></a>
+                </td>
+            </tr>
+            <tr th:unless=${itemsNotEmpty}>
+                <td colspan="8" style="padding: 60px 0"> 데이터가 없습니다 </td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <div th:if=${itemsNotEmpty} class="pagination">
+        <ul>
+            <th:block th:switch="${startpage} <= ${endpage}">
+                <li th:case="${rowNUM} < 0" style="display: none;">
+                    <a class="icon first" th:href="@{mbList(page=${1})}">&laquo;</a>
+                </li>
+                <li th:case="${rowNUM} > ${startpage}" style="display: inline-block">
+                    <a class="icon first" th:href="@{mbList(page=${startpage})}">&laquo;</a>
+                </li>
+                <li th:case="${startpage} < 10" style="display: none;">
+                    <a class="icon first" th:href="@{mbList(page=${startpage}-10)}">&laquo;</a>
+                </li>
+                <li th:case="${startpage} > 10" style="display: inline-block;">
+                    <a class="icon first" th:href="@{mbList(page=${1})}">&laquo;</a>
+                </li>
+            </th:block>
+
+            <th:block th:switch="${rowNUM} >= 1">
+                <li th:case="(${rowNUM}-1) == 0" style="display: none">
+                    <a class="icon first" th:href="@{mbList(page=${1})}">&laquo;</a>
+                </li>
+                <li th:case="(${rowNUM}-1) > 0" style="display: inline-block">
+                    <a class="icon first" th:href="@{mbList(page=${rowNUM}-1)}"></a>
+                </li>
+            </th:block>
+            
+            <!-- for 문 -->
+            <li th:each="i : ${#numbers.sequence(startpage, endpage)}" style="display: inline-block">
+                <div class="on" th:if="${i}==${rowNUM}" th:text="${i}"></div>
+                <div th:unless="${i}==${rowNUM}">
+                    <a class="on" th:href="@{mbList(page=${i})}" th:text="${i}"></a>
+                </div>
+            </li>
+            <!-- for 문 -->
+            
+            <th:block th:switch="${rowNUM} <= ${endpage}">
+                <li th:case="${rowNUM} < ${endpage}" style="display: inline-block">
+                    <a class="icon last" th:href="@{mbList(page=${rowNUM}+1)}"></a>
+                </li>
+                <li th:case="${rowNUM} == ${endpage}" style="display: none">
+                    <a class="icon last" th:href="@{mbList(page=${endpage})}"></a>
+                </li>
+            </th:block>
+
+            <th:block th:switch="${rowNUM} < ${endpage}">
+                <li th:case="${rowNUM} < ${endpage}" style="display: inline-block">
+                    <a class="icon last" th:href="@{mbList(page=${startpage}+10)}"></a>
+                </li>
+            </th:block>
+            
+        </ul>
+    </div> 
+</div>

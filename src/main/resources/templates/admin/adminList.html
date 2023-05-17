@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net/nz/thymeleaf/layout"
+    layout:decorate="~{layouts/layout}">
+    
+  	<th:block layout:fragment="css">
+  	</th:block>
+	<th:block layout:fragment="script">
+		<script type="text/javascript">
+		   history.pushState(null, null, location.href);
+		   window.onpopstate = function(){
+		       history.go(1);
+		   }
+		</script>
+	</th:block>
+<head>
+    <title>회원정보</title>
+</head>
+<div th:if=${session.id} layout:fragment="content">
+    <div class="container">
+        <th:block th:include="admin/clause.html"></th:block>
+        <th:block th:include="admin/list.html"></th:block>
+    </div>
+</div>
+
+</html>
