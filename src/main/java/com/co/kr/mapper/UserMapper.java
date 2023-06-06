@@ -28,6 +28,9 @@ public interface UserMapper {
     //중복체크
     public int mbDuplicationCheck(Map<String, String> map);
     
+    //비번체크
+    //public int mbDublePxCheck(Map<String, String> map);
+    
     //업데이트
     public void mbUpdate(LoginDomain loginDomain);
     

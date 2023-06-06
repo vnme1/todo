@@ -18,5 +18,6 @@ public interface TodoMapper {
     public void updateToDoList(TodoContentDomain todoContentDomain);
     public void deleteToDoList(HashMap<String, Object> map);
 
+    public TodoListDomain boardSelectOne(HashMap<String, Object> map);
 
 }

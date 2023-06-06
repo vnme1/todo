@@ -30,7 +30,7 @@
 	</select>
 	
 	<!-- pw_check 
-	<select id="pwcheck" resultType="int" parameterType="hashMap">
+	<select id="mbDublePxCheck" resultType="int" parameterType="hashMap">
 	   SELECT COUNT(*) FROM sts.member WHERE mb_id=#{mbId} AND mb_pw=#{mbPw}
 	</select>
 	-->

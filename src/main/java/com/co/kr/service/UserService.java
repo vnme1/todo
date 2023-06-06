@@ -25,12 +25,14 @@ public interface UserService {
     //mbDuplicationCheck
     public int mbDuplicationCheck(Map<String, String> map);
     
-    //public int pw_check(Map<String, String> map);
+    //q비번 비교
+    //public int mbDublePxCheck(Map<String, String> map);
     
     //update
     public void mbUpdate(LoginDomain loginDomain); 
     
     //delete 
-    public void mbRemove(Map<String, String> map); 
+    public void mbRemove(Map<String, String> map);
+
     
 }

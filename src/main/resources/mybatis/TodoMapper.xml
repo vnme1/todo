@@ -22,15 +22,14 @@
         VALUES (
             #{mbId},          
             #{bdContent},
-            , 'N'
+            #{bdDone}  
         )
 	</insert>
 	
 	<!-- Content update -->
     <update id="updateToDoList" parameterType="com.co.kr.domain.TodoContentDomain">
         UPDATE sts.todo SET
-                SET
-            status = 'Y'
+            bd_done = 'Y'
         WHERE bd_seq = #{bdSeq}
     </update>
     
@@ -38,5 +37,11 @@
     <delete id="deleteToDoList" parameterType="hashMap">
        DELETE FROM sts.todo WHERE bd_seq=#{bdSeq}
     </delete>
+    
+    <!-- content -->
+	<select id="todoSelectOne" resultType="com.co.kr.domain.TodoListDomain" parameterType="map">
+    	SELECT bd_seq, mb_id, bd_content,bd_done, bd_create_at, bd_update_at
+    	FROM sts.todo where bd_seq = #{bdSeq}
+	</select>
 
 </mapper>

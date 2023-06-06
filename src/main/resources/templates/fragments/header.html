@@ -13,7 +13,7 @@
            <ul class="nav">
                <th:block>
 <!--               <th:block th:if="${session.userAuth}==3"> 쿼리스트링보내기-->
-                   <li class="on"><a class="menu1" href="#">맴버정보</a></li>
+                   <li class="on"><a class="menu1" th:href="@{mbList(page=1)}">맴버정보</a></li>
                </th:block>
                <th:block>
                    <li class="on"><a class="menu1" th:href="@{bdList}">마이페이지</a></li>

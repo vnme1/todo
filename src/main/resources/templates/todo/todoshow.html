@@ -11,7 +11,7 @@
 
     <style>
       .app-container {
-        height: 100vh;
+        height: 40vh;
         width: 100%;
       }
       .complete {
@@ -20,6 +20,13 @@
     </style>
   </head>
   <body>
+  	<div  class="userInfo" th:if=${session.id}>
+    	<span th:text="${session.id}"></span><span> 님 / </span>
+   	 	<span th:text="${session.mbLevel}"></span><span> 레벨</span>
+    	<button type="button">
+        	<a th:href="@{logout}" style="color: #fff">로그아웃</a>
+    	</button>
+	</div>
     <div
       class="app-container d-flex align-items-center justify-content-center flex-column"
       ng-app="myApp"
@@ -27,51 +34,40 @@
     >
 
       <h3>Todo App</h3>
-      <div class="d-flex align-items-center mb-3">
-        <div class="form-group mr-3 mb-0">
-          <input
-          	
-            type="text"
-            class="form-control"
-            id="formGroupExampleInput"
-            placeholder="Enter a task here"
-          />
-          
-        </div>
-        <button
-          type="button"
-          class="btn btn-primary mr-3"
-        >
-          Save
-        </button>
-        
+      
+      <div class="d-flex align-items-center mb-3" style="display: inline-block;">
+        <form class="form-group mr-3 mb-0" role="form" action="upload" method="post" enctype="multipart/form-data">
+        <div style="display: inline-block">
+                <input type="text" class="form-control" style="vertical-align:middle" placeholder="할 일을 적으세요!"/>
+            </div>
+            <div style="display: inline-block">
+                <button type="submit" class="btn btn-primary mr-3">저장하기</button>
+            </div>
+         </form>
       </div>
-     
-      <div class="table-wrapper">
+      <div class="table-wrapper" th:object="${items}" method="post">
         <table class="table table-hover table-bordered">
+        
           <thead>
             <tr>
-              <th>No.</th>
-              
+              <th>No.</th>              
               <th>Todo context</th>
               <th>status</th>
-              <th>Actions</th>
-              
+              <th>user</th>
+              <th>Actions</th>              
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td></td> <!--no-->
+            <tr th:each="item : ${items}">
+              <td th:text="${item.bdSeq}"></td>
+              <td><a th:text="${item.bdContent}" th:href="@{/detail(bdSeq = ${item.bdSeq})}"></a></td>
+              <td><a th:text="${item.bdDone}" th:href="@{/detail(bdSeq = ${item.bdSeq})}"></a></td>
+              <td th:text="${item.mbId}"></td>
               
-              <td></td> <!--context-->
-              <td></td> <!--status-->
               <td>
-                <button class="btn btn-danger">
-                  Delete
-                </button>
-                <button class="btn btn-success">
-                  Finished
-                </button>
+              	<a th:href="@{/edit(bdSeq = ${item.bdSeq})}"><button class="btn btn-success">성공</button></a>
+            	<a th:href="@{/remove(bdSeq = ${item.bdSeq})}"><button class="btn btn-danger">삭제</button></a>
+                
               </td>
             </tr>
           </tbody>

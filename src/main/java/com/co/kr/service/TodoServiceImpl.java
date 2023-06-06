@@ -1,6 +1,7 @@
 package com.co.kr.service;
 
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -35,5 +36,17 @@ public class TodoServiceImpl implements TodoService {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	@Override
+	public void deleteToDoList(HashMap<String, Object> map) {
+		// TODO Auto-generated method stub
+		todoMapper.deleteToDoList(map);
+	}
+	
+	@Override
+	public TodoListDomain todoSelectOne(HashMap<String, Object> map) {
+		return todoMapper.boardSelectOne(map);
+	}
+	
 
 }
