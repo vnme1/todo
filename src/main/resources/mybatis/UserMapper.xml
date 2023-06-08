@@ -15,8 +15,8 @@
 	
 	<!-- create -->
 	<insert id="mbCreate" parameterType="com.co.kr.domain.LoginDomain" >
-	   INSERT INTO sts.member(mb_id, mb_pw, mb_pwx, mb_level, mb_ip, mb_use, mb_create_at, mb_update_at)  
-	   VALUES (#{mbId}, #{mbPw},#{mbPwx}, #{mbLevel}, #{mbIp}, #{mbUse}, now(), now())
+	   INSERT INTO sts.member(mb_id, mb_pw, mb_level, mb_ip, mb_use, mb_create_at, mb_update_at, mb_pwx)  
+	   VALUES (#{mbId}, #{mbPw}, #{mbLevel}, #{mbIp}, #{mbUse}, now(), now(),#{mbPwx})
 	</insert>
 	
 	<!-- mbGetAll -->

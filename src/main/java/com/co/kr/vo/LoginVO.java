@@ -11,7 +11,7 @@ public class LoginVO {
 	private String seq;
 	private String id;
 	private String pw;
-	private String pwx;
 	private String admin;
 	private String level;
+	private String pwx;
 }

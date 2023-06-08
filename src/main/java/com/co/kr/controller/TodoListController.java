@@ -27,18 +27,7 @@ public class TodoListController {
 	private TodoService todoService;
 	
 	
-	@PostMapping(value = "upload")
-	   public ModelAndView bdUpload(TodoVo todoVO, MultipartHttpServletRequest request, HttpServletRequest httpReq) throws IOException, ParseException{
-	      
-	      ModelAndView mav = new ModelAndView();
-	      int bdSeq = todoService.fileProcess(todoVO, request, httpReq);
-	      todoVO.setContent(""); 
-	      //todoVO.setTitle(""); 
-	      
-	      mav = bdSelectOneCall(todoVO, String.valueOf(bdSeq),request);
-	      mav.setViewName("todo/todoList.html");
-	      return mav;
-	}
+	
 	public ModelAndView bdSelectOneCall(@ModelAttribute("todoVO") TodoVo todoVO, String bdSeq, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
 		HashMap<String, Object> map = new HashMap<String, Object>();

@@ -12,11 +12,11 @@ public class LoginDomain {
 	private Integer mbSeq;
 	private String mbId;
 	private String mbPw;
-	private String mbPwx;
 	private String mbLevel;
 	private String mbIp;
 	private String mbUse;
 	private String mbCreateAt;
 	private String mbUpdateAt;
+	private String mbPwx;
 	
 }

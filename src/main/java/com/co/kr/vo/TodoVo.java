@@ -9,9 +9,9 @@ public class TodoVo {
 	
 	private String isEdit;
 	private String seq;
-	//private String title;
+	
 	private String content;
-
+	private String done;
 }
 
 

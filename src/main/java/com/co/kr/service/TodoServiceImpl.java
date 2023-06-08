@@ -45,8 +45,9 @@ public class TodoServiceImpl implements TodoService {
 	
 	@Override
 	public TodoListDomain todoSelectOne(HashMap<String, Object> map) {
-		return todoMapper.boardSelectOne(map);
+		return todoMapper.todoSelectOne(map);
 	}
+
 	
 
 }

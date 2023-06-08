@@ -60,8 +60,8 @@
           <tbody>
             <tr th:each="item : ${items}">
               <td th:text="${item.bdSeq}"></td>
-              <td><a th:text="${item.bdContent}" th:href="@{/detail(bdSeq = ${item.bdSeq})}"></a></td>
-              <td><a th:text="${item.bdDone}" th:href="@{/detail(bdSeq = ${item.bdSeq})}"></a></td>
+              <td><a th:text="${item.bdContent}"></a></td>
+              <td><a th:text="${item.bdDone}"></a></td>
               <td th:text="${item.mbId}"></td>
               
               <td>

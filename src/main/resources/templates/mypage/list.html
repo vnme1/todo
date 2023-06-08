@@ -1,0 +1,43 @@
+<div  class="userInfo" th:if=${session.id}>
+    <span th:text="${session.id}"></span><span> 님 / </span>
+    <span th:text="${session.mbLevel}"></span><span> 레벨</span>
+	<button type="button">
+	    <a th:href="@{logout}" style="color: #fff">로그아웃</a>
+	</button>
+</div>
+<div class="section list">
+<body>
+	
+    <table>
+    	<colgroup>
+            <col style="width:30%"/>
+            <col style="width:40%"/>
+        </colgroup>
+    
+        <tr>
+            <th>ID</th>
+            <td th:text="${session.id}"></td>
+        </tr>
+        <tr>
+            <th>비밀번호</th>
+            <td th:text="${session.pw}"></td>
+        </tr>
+        <tr>
+            <th>레벨</th>
+            <td th:text="${session.mbLevel}"></td>
+        </tr>
+        <tr>
+            <th>아이피</th>
+            <td th:text="${session.ip}"></td>
+        </tr>
+        <tr>
+            <th>가입일</th>
+            <td th:text="${session.createat}"></td>
+        </tr>
+    </table>
+    
+    <a th:href="@{/remove}"><button>회원탈퇴</button></a>
+        	
+</body>
+</div>
+</form>

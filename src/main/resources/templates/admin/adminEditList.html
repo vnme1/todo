@@ -14,12 +14,12 @@
 		</script>
 	</th:block>
 <head>
-    <title>마이페이지</title>
+    <title>회원정보</title>
 </head>
 <div th:if=${session.id} layout:fragment="content">
     <div class="container">
-        
-        <th:block th:include="mypage/list.html"></th:block>
+        <th:block th:include="admin/clause.html"></th:block>
+        <th:block th:include="admin/list.html"></th:block>
     </div>
 </div>
 
